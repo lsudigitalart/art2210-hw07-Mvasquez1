@@ -2,6 +2,9 @@ let spunch;
 let yodel;
 let ed, bobert;
 let hasplayed = false;
+let choice;
+x = 600; 
+y = 500;
 
 function preload() {
   spunch = loadSound("sponchbob.mp3");
@@ -13,26 +16,27 @@ function preload() {
 function setup() {
   createCanvas(600, 500);
   background(100);
-  image(ed,0,0,600,500);
-  image(bobert,0,0,600,100);
-} 
 
-function draw() {
-  m = millis();
-  if(m > 4000)
-    {
-      fill('yellow');
-      ellipse(600/2,500/2,100); 
-    }
-
-  if(hasplayed == !true){
-   spunch.play();
-    //yodel.play()
-    hasplayed = true;
-  }
+  // Random 0 and 1
+  choice = floor(random(2)); 
 }
 
-//ellipse (x,y,size) x++ to move it
-//exensions - p5js.vscode
-//ctrl+shift+p
-//create p5js project
+function draw() {
+  let m = millis();
+  if (m > 4000) {
+    fill('yellow');
+    ellipse(x / 2, y / 2, 100); 
+  }
+
+  if (!hasplayed) {
+  if (choice === 0) {
+    image(ed, 0, 0, 600, 500);  
+    yodel.play();  
+  } else {
+    image(bobert, 0, 0, 600, 500);  
+    spunch.play(); 
+  }
+  hasplayed = true;
+}
+
+}
