@@ -3,7 +3,9 @@ let yodel;
 let ed, bobert;
 let hasplayed = false;
 let choice;
-x = 600; 
+x = 600;
+var move={mx: 0};
+ 
 y = 500;
 
 function preload() {
@@ -22,6 +24,7 @@ function setup() {
 }
 
 function draw() {
+  
   let m = millis();
   if (m > 4000) {
     fill('yellow');
@@ -32,11 +35,28 @@ function draw() {
   if (choice === 0) {
     image(ed, 0, 0, 600, 500);  
     yodel.play();  
+    fill('yellow');
+    ellipse((move.mx / 2) , y / 2, 100); 
+    move.mx = move.mx+20;
+
   } else {
     image(bobert, 0, 0, 600, 500);  
     spunch.play(); 
   }
   hasplayed = true;
+}
+
+if(choice ==0)
+{
+  image(ed, 0, 0, 600, 500);  
+ // yodel.play();  
+  fill('yellow');
+  ellipse((move.mx/2 ) , y / 2, 100); 
+  move.mx = move.mx+15;
+  // if(move.mx > width*2)
+  // {
+  //   move.mx = 0;
+  // }
 }
 
 }
